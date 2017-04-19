@@ -52,7 +52,7 @@
     ],
     "fields": [],
     "changelogDate": "20160208210109",
-    "dto": "no",
+    "dto": "mapstruct",
     "service": "no",
     "entityTableName": "test_custom_table_name_entity",
     "pagination": "no"
