@@ -29,7 +29,7 @@
     "fields": [],
     "changelogDate": "20160208210109",
     "entityTableName": "test_multiple_rel",
-    "dto": "mapstruct",
+    "dto" : "mapstruct",
     "service": "no",
     "pagination": "no"
 }
