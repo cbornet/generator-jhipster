@@ -49,6 +49,7 @@ describe('JHipster generator', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtClient);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.maven);
             assert.file(expectedFiles.dockerServices);
             assert.file(expectedFiles.mysql);
@@ -107,6 +108,7 @@ describe('JHipster generator', () => {
         it('creates expected default files for angular2', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.maven);
             assert.file(expectedFiles.dockerServices);
             assert.file(expectedFiles.mysql);
@@ -153,6 +155,7 @@ describe('JHipster generator', () => {
         it('creates expected default files', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.maven);
             assert.file(expectedFiles.dockerServices);
             assert.file(expectedFiles.mysql);
@@ -202,6 +205,7 @@ describe('JHipster generator', () => {
         it('creates expected default files', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.maven);
             assert.file(expectedFiles.dockerServices);
             assert.file(expectedFiles.mariadb);
@@ -244,6 +248,7 @@ describe('JHipster generator', () => {
         it('creates expected default files for gradle', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.gradle);
             assert.file(['gradle/yeoman.gradle']);
             assert.file(expectedFiles.dockerServices);
@@ -720,6 +725,7 @@ describe('JHipster generator', () => {
 
         it('creates expected files with JWT authentication', () => {
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(getFilesForOptions(angularJsfiles, {
                 useSass: false,
                 enableTranslation: true,
@@ -809,6 +815,7 @@ describe('JHipster generator', () => {
         it('creates expected files with Kafka message broker enabled', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.gatling);
             assert.file(expectedFiles.messageBroker);
         });
@@ -1019,6 +1026,7 @@ describe('JHipster generator', () => {
 
         it('creates expected files with the gateway application type', () => {
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.gateway);
             assert.file(expectedFiles.eureka);
             assert.noFile(expectedFiles.consul);
@@ -1087,6 +1095,8 @@ describe('JHipster generator', () => {
 
         it('creates expected files with the monolith application type', () => {
             assert.file(expectedFiles.server);
+            assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.client);
             assert.file(expectedFiles.eureka);
             assert.noFile(expectedFiles.consul);
@@ -1121,6 +1131,7 @@ describe('JHipster generator', () => {
 
         it('creates expected files with the gateway application type', () => {
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.gateway);
             assert.noFile(expectedFiles.eureka);
             assert.file(expectedFiles.consul);
@@ -1300,6 +1311,7 @@ describe('JHipster server generator', () => {
         it('creates expected files for default configuration with gatling enabled for server generator', () => {
             assert.file(expectedFiles.server);
             assert.file(expectedFiles.jwtServer);
+            assert.file(expectedFiles.jwtUserServer);
             assert.file(expectedFiles.maven);
             assert.file(expectedFiles.gatling);
             assert.noFile(getFilesForOptions(angularJsfiles, {

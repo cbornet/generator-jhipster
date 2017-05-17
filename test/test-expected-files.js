@@ -98,6 +98,12 @@ const expectedFiles = {
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/service/dto/UserDTO.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/service/mapper/package-info.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/service/mapper/UserMapper.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/CustomParameterizedException.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/ErrorConstants.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/ErrorVM.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/ExceptionTranslator.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/FieldErrorVM.java`,
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/errors/ParameterizedErrorVM.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/vm/package-info.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/vm/KeyAndPasswordVM.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/vm/LoggerVM.java`,
@@ -109,8 +115,16 @@ const expectedFiles = {
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/AuditResource.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/LogsResource.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/UserResource.java`,
+        `${SERVER_TEST_RES_DIR}mails/testEmail.html`,
+        `${SERVER_TEST_RES_DIR}i18n/messages_en.properties`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/WebConfigurerTest.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/config/WebConfigurerTestController.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/repository/CustomAuditEventRepositoryIntTest.java`,
         `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/SecurityUtilsUnitTest.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/service/MailServiceIntTest.java`,
         `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/service/UserServiceIntTest.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/errors/ExceptionTranslatorIntTest.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/errors/ExceptionTranslatorTestController.java`,
         `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/AccountResourceIntTest.java`,
         `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/AuditResourceIntTest.java`,
         `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/LogsResourceIntTest.java`,
@@ -367,7 +381,14 @@ const expectedFiles = {
     jwtServer: [
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/JWTConfigurer.java`,
         `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/JWTFilter.java`,
-        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProvider.java`
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProvider.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/jwt/JWTFilterTest.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/security/jwt/TokenProviderTest.java`
+    ],
+
+    jwtUserServer: [
+        `${SERVER_MAIN_SRC_DIR}com/mycompany/myapp/web/rest/UserJWTController.java`,
+        `${SERVER_TEST_SRC_DIR}com/mycompany/myapp/web/rest/UserJWTControllerIntTest.java`
     ],
 
     jwtClient: [
