@@ -89,7 +89,7 @@
         "fs-extra": "7.0.1",
         "jsdoc": "3.5.5",
         "mocha": "6.0.2",
-        "sinon": "7.2.5",
+        "sinon": "7.3.1",
         "yeoman-assert": "3.1.1",
         "yeoman-test": "1.9.1"
     },
