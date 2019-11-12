@@ -90,13 +90,13 @@ import org.junit.jupiter.api.Test;
 <%_ if (cacheProvider === 'redis') { _%>
 import org.junit.jupiter.api.extension.ExtendWith;
 <%_ } _%>
-<%_ if (fieldsContainOwnerManyToMany) { _%>
+<%_ if (eagerLoadRelationships) { _%>
 import org.mockito.Mock;
 <%_ } _%>
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-<%_ if (searchEngine === 'elasticsearch' && pagination !== 'no' || fieldsContainOwnerManyToMany) { _%>
+<%_ if (searchEngine === 'elasticsearch' && pagination !== 'no' || eagerLoadRelationships) { _%>
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 <%_ } _%>
@@ -127,7 +127,7 @@ import java.time.ZonedDateTime;
 import java.time.ZoneOffset;<% } %><% if (fieldsContainLocalDate === true || fieldsContainZonedDateTime === true) { %>
 import java.time.ZoneId;<% } %><% if (fieldsContainInstant === true) { %>
 import java.time.temporal.ChronoUnit;<% } %>
-<%_ if (fieldsContainOwnerManyToMany) { _%>
+<%_ if (eagerLoadRelationships) { _%>
 import java.util.ArrayList;
 <%_ } _%>
 <%_ if (searchEngine === 'elasticsearch') { _%>
@@ -150,7 +150,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 <%_ } _%>
 import static org.hamcrest.Matchers.hasItem;
-<%_ if (searchEngine === 'elasticsearch' || fieldsContainOwnerManyToMany === true) { _%>
+<%_ if (searchEngine === 'elasticsearch' || eagerLoadRelationships) { _%>
 import static org.mockito.Mockito.*;
 <%_ } _%>
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -379,7 +379,7 @@ _%>
     @Autowired
     private <%= entityClass %>ReactiveRepository <%= entityInstance %>ReactiveRepository;
     <%_ } _%>
-    <%_ if (fieldsContainOwnerManyToMany === true) { _%>
+    <%_ if (eagerLoadRelationships) { _%>
 
     @Mock
     private <%= entityClass %>Repository <%= entityInstance %>RepositoryMock;
@@ -389,7 +389,7 @@ _%>
     @Autowired
     private <%= entityClass %>Mapper <%= entityInstance %>Mapper;
     <%_ } if (service !== 'no') { _%>
-    <%_ if (fieldsContainOwnerManyToMany === true) { _%>
+    <%_ if (eagerLoadRelationships) { _%>
 
     @Mock
     private <%= entityClass %>Service <%= entityInstance %>ServiceMock;
@@ -715,7 +715,7 @@ _%>
             <%_ } _%>
             .andExpect(jsonPath("$.[*].<%=fields[idx].fieldName%>").value(hasItem(<% if ((fields[idx].fieldType === 'byte[]' || fields[idx].fieldType === 'ByteBuffer') && fields[idx].fieldTypeBlobContent !== 'text') { %>Base64Utils.encodeToString(<% } else if (fields[idx].fieldType === 'ZonedDateTime') { %>sameInstant(<% } %><%='DEFAULT_' + fields[idx].fieldNameUnderscored.toUpperCase()%><% if ((fields[idx].fieldType === 'byte[]' || fields[idx].fieldType === 'ByteBuffer') && fields[idx].fieldTypeBlobContent !== 'text') { %><% if (databaseType === 'cassandra') { %>.array()<% } %>)<% } else if (fields[idx].fieldType === 'Integer') { %><% } else if (fields[idx].fieldType === 'Long') { %>.intValue()<% } else if (fields[idx].fieldType === 'Float' || fields[idx].fieldType === 'Double') { %>.doubleValue()<% } else if (fields[idx].fieldType === 'BigDecimal') { %>.intValue()<% } else if (fields[idx].fieldType === 'Boolean') { %>.booleanValue()<% } else if (fields[idx].fieldType === 'ZonedDateTime') { %>)<% } else if (fields[idx].fieldType !== 'String') { %>.toString()<% } %>)))<% } %>;
     }
-    <% if (fieldsContainOwnerManyToMany === true) { %>
+    <% if (eagerLoadRelationships) { %>
     @SuppressWarnings({"unchecked"})
     public void getAll<%= entityClassPlural %>WithEagerRelationshipsIsEnabled() throws Exception {
         <%_ if (service !== 'no') { _%>

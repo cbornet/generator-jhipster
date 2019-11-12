@@ -731,6 +731,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
                 context.fieldsContainOwnerOneToOne = false;
                 context.fieldsContainOneToMany = false;
                 context.fieldsContainManyToOne = false;
+                context.eagerLoadRelationships = false;
                 context.fieldsIsReactAvField = false;
                 context.blobFields = [];
                 context.differentTypes = [context.entityClass];
@@ -1070,6 +1071,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
                     } else if (relationship.relationshipType === 'many-to-one') {
                         context.fieldsContainManyToOne = true;
                     }
+                    context.eagerLoadRelationships = context.fieldsContainOwnerManyToMany || context.fieldsContainOwnerOneToOne || context.fieldsContainManyToOne;
 
                     if (relationship.relationshipValidateRules && relationship.relationshipValidateRules.includes('required')) {
                         if (entityName.toLowerCase() === relationship.otherEntityName.toLowerCase()) {
