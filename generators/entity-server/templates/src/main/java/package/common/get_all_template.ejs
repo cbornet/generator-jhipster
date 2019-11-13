@@ -48,14 +48,14 @@
     }
 <% } else { %>
     <%_ if (pagination === 'no') { _%>
-    public List<<%= instanceType %>> getAll<%= entityClassPlural %>(<% if (fieldsContainNoOwnerOneToOne) { %>@RequestParam(required = false) String filter<% } %><% if (eagerLoadRelationships && fieldsContainNoOwnerOneToOne) { %>,<% } %><% if (eagerLoadRelationships) { %>@RequestParam(required = false, defaultValue = "false") boolean eagerload<% }%>) {<%- include('get_all_stream_template', {viaService: viaService}); -%>
+    public List<<%= instanceType %>> getAll<%= entityClassPlural %>(<% if (fieldsContainNoOwnerOneToOne) { %>@RequestParam(required = false) String filter<% } %><% if (eagerLoadRelationships && fieldsContainNoOwnerOneToOne) { %>,<% } %><% if (eagerLoadRelationships && pagination !== 'no') { %>@RequestParam(required = false, defaultValue = "false") boolean eagerload<% }%>) {<%- include('get_all_stream_template', {viaService: viaService}); -%>
         log.debug("REST request to get all <%= entityClassPlural %>");<% if (viaService) { %>
         return <%= entityInstance %>Service.findAll();<% } else if (dto === 'mapstruct') { %>
         List<<%= asEntity(entityClass) %>> <%= entityInstancePlural %> = <%= entityInstance %>Repository.<% if (eagerLoadRelationships) { %>findAllWithEagerRelationships<% } else { %>findAll<% } %>();
         return <%= entityListToDtoListReference %>(<%= entityInstancePlural %>);<% } else { %>
         return <%= entityInstance %>Repository.<% if (eagerLoadRelationships) { %>findAllWithEagerRelationships<% } else { %>findAll<% } %>();<% } %>
     <%_ } if (pagination !== 'no') { _%>
-    public ResponseEntity<List<<%= instanceType %>>> getAll<%= entityClassPlural %>(Pageable pageable<% if (reactive) { %>, ServerHttpRequest request<% } %><% if (fieldsContainNoOwnerOneToOne) { %>, @RequestParam(required = false) String filter<% } %><% if (eagerLoadRelationships) { %>, @RequestParam(required = false, defaultValue = "false") boolean eagerload<% } %>) {<%- include('get_all_stream_template', {viaService: viaService}); -%>
+    public ResponseEntity<List<<%= instanceType %>>> getAll<%= entityClassPlural %>(Pageable pageable<% if (reactive) { %>, ServerHttpRequest request<% } %><% if (fieldsContainNoOwnerOneToOne) { %>, @RequestParam(required = false) String filter<% } %><% if (eagerLoadRelationships && pagination !== 'no') { %>, @RequestParam(required = false, defaultValue = "false") boolean eagerload<% } %>) {<%- include('get_all_stream_template', {viaService: viaService}); -%>
         log.debug("REST request to get a page of <%= entityClassPlural %>");
     <%_ if (viaService) { _%>
         <%_ if (eagerLoadRelationships) { _%>
